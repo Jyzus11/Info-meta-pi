@@ -42,6 +42,412 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased" x-data="{ sidebarOpen:false, activeSection:'resumen' }">
 
+<!-- =====================================================================
+     BLOQUE DE DATOS
+     Todo lo que cambia mes a mes vive aquí. El script actualizar_dashboard.py
+     reemplaza SOLO este bloque (busca "const DASHBOARD_DATA = {" y
+     "};" que lo cierra) leyendo directamente los dos Excel de SharePoint.
+     No edites el resto del archivo para actualizar cifras: edita este JSON,
+     o mejor, deja que el script lo haga por ti.
+     ===================================================================== -->
+<script id="dashboard-data-block">
+const DASHBOARD_DATA = {
+  "lastUpdated": "2026-08-20",
+  "pauta": {
+    "months": [
+      "Abril",
+      "Junio",
+      "Julio"
+    ],
+    "conversaciones": [
+      195,
+      231,
+      1167
+    ],
+    "alcanceMeta": [
+      51904,
+      130237,
+      241224
+    ],
+    "inversionTotal": [
+      null,
+      null,
+      3784875
+    ],
+    "inversionVariacion": [
+      null,
+      null,
+      null
+    ],
+    "targetText": {
+      "Abril": "Campañas en Meta enfocadas en generar conversaciones a partir de piezas publicitarias de propiedades privadas y de la SAE. En paralelo, campaña de YouTube (Google) orientada a promoción de marca, y creación de un público de retargeting a partir de las visitas al perfil de redes sociales.",
+      "Mayo": "Se mantiene el enfoque en conversaciones sobre propiedades privadas y SAE vía Meta, y promoción de marca vía YouTube. Primer mes con crecimiento fuerte de alcance (+144% vs. abril) tras ampliar la inversión.",
+      "Junio": "Continúa la estrategia de conversaciones sobre el portafolio SAE y privado. Se activó un plan de mejora de publicación diaria de inmuebles. El mes se vio afectado por interrupciones de campañas por falta de fondos en el medio de pago, lo que redujo impresiones e inversión frente a mayo.",
+      "Julio": "Mes de mejor desempeño del año: prioriza activos estratégicos de más de $1.000 millones y leads calificados. Se incorpora Google Max Performance (display, buscador y YouTube Shorts) para maximizar conversión, y TikTok se suma con retargeting de visitas al perfil."
+    },
+    "detalle": {
+      "Abril": {
+        "Impresiones Meta": 92275,
+        "Clics Meta": 4797,
+        "CPC Meta": 368,
+        "Impresiones Google": 964397,
+        "CPC Google": 388
+      },
+      "Mayo": {
+        "Impresiones Meta": 212919,
+        "Clics Meta": 6260,
+        "CPC Meta": "$523",
+        "Interacciones Google": 224699,
+        "CPC Google": "$536"
+      },
+      "Junio": {
+        "Impresiones Meta": 230051,
+        "Clics Meta": 3829,
+        "CPC Meta": 689,
+        "Impresiones Google": 97903,
+        "Interacciones Google": 75881,
+        "CPC Google": 536
+      },
+      "Julio": {
+        "Impresiones Meta": 497855,
+        "Clics Meta": 18088,
+        "CPC Meta": 256,
+        "Inversión Meta": "$2.616.177",
+        "Impresiones Google": 594631,
+        "Interacciones Google": 75881,
+        "CPC Google": 128,
+        "Inversión Google": "$710.000",
+        "Inversión Tiktok": "$458.698"
+      }
+    }
+  },
+  "portales": {
+    "corteLabel": "20 de agosto de 2026",
+    "mesEnCurso": "Agosto",
+    "totalAcumulado": 800,
+    "porPortalAcumulado": [
+      {
+        "portal": "Finca Raíz",
+        "leads": 303,
+        "pct": 37.9
+      },
+      {
+        "portal": "Proppit",
+        "leads": 253,
+        "pct": 31.6
+      },
+      {
+        "portal": "Ciencuadras",
+        "leads": 181,
+        "pct": 22.6
+      },
+      {
+        "portal": "Metrocuadrado",
+        "leads": 61,
+        "pct": 7.6
+      },
+      {
+        "portal": "Yicela",
+        "leads": 1,
+        "pct": 0.1
+      }
+    ],
+    "mesEnCursoPorPortal": {
+      "Finca Raíz": 45,
+      "Proppit": 7,
+      "Ciencuadras": 19,
+      "Metrocuadrado": 3,
+      "Yicela": 0
+    },
+    "porMesYPortal": {
+      "meses": [
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto*"
+      ],
+      "series": [
+        {
+          "name": "Finca Raíz",
+          "data": [
+            4,
+            19,
+            21,
+            64,
+            150,
+            45
+          ]
+        },
+        {
+          "name": "Proppit",
+          "data": [
+            26,
+            36,
+            124,
+            50,
+            10,
+            7
+          ]
+        },
+        {
+          "name": "Ciencuadras",
+          "data": [
+            24,
+            57,
+            48,
+            24,
+            9,
+            19
+          ]
+        },
+        {
+          "name": "Metrocuadrado",
+          "data": [
+            12,
+            11,
+            17,
+            7,
+            11,
+            3
+          ]
+        },
+        {
+          "name": "Yicela",
+          "data": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "leadsPorMes": {
+      "meses": [
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto"
+      ],
+      "leads": [
+        66,
+        123,
+        211,
+        145,
+        181,
+        74
+      ]
+    },
+    "porTipoInmueble": [
+      {
+        "tipo": "Apartamento",
+        "leads": 514
+      },
+      {
+        "tipo": "Lote",
+        "leads": 114
+      },
+      {
+        "tipo": "Casa",
+        "leads": 63
+      },
+      {
+        "tipo": "Bodega",
+        "leads": 45
+      },
+      {
+        "tipo": "Local Comercial",
+        "leads": 35
+      },
+      {
+        "tipo": "Oficina",
+        "leads": 22
+      },
+      {
+        "tipo": "Apartaestudio",
+        "leads": 3
+      },
+      {
+        "tipo": "Cabaña",
+        "leads": 2
+      },
+      {
+        "tipo": "Ofcina",
+        "leads": 1
+      },
+      {
+        "tipo": "Casa Campestre",
+        "leads": 1
+      }
+    ],
+    "porVentaArriendo": [
+      {
+        "modalidad": "Admin / Arriendo SAE",
+        "leads": 414
+      },
+      {
+        "modalidad": "Venta SAE",
+        "leads": 206
+      },
+      {
+        "modalidad": "Venta",
+        "leads": 106
+      },
+      {
+        "modalidad": "Arriendo Privado",
+        "leads": 74
+      }
+    ]
+  },
+  "novedades": [
+    {
+      "mes": "Julio",
+      "tag": "Récord del año",
+      "tagClass": "success",
+      "items": [
+        "Mejor mes del año en conversaciones (1.167), clics (26.180) e impresiones (1.387.197 en pauta).",
+        "1.558 leads totales generados (Meta + portales), el mejor registro histórico del indicador.",
+        "Se normalizó la disponibilidad de fondos en el medio de pago, corrigiendo las interrupciones de junio.",
+        "Lanzamiento de Google Max Performance para maximizar alcance y conversión de forma automatizada.",
+        "Rendición de Cuentas 2025–2026 y apertura de la Agencia Territorial Sur (Cali) impulsaron 17 menciones en medios y 871 piezas gráficas producidas."
+      ]
+    },
+    {
+      "mes": "Junio",
+      "tag": "Alerta operativa",
+      "tagClass": "error",
+      "items": [
+        "Interrupciones temporales de campañas por indisponibilidad de fondos en el medio de pago: impresiones -29,1% e inversión -19,2% vs. mayo.",
+        "Ciencuadras solo permitió publicar inmuebles en arriendo y Proppit solo en venta durante el mes, limitando la captación en ambos portales.",
+        "Se activó un plan de mejora de publicación diaria de inmuebles: 83 inmuebles publicados, +277% vs. mayo."
+      ]
+    },
+    {
+      "mes": "Mayo",
+      "tag": null,
+      "tagClass": null,
+      "items": [
+        "Mejor mes de visualizaciones en redes hasta la fecha: 394.059, +41,7% vs. abril.",
+        "26 menciones en medios de comunicación, el nivel más alto del semestre.",
+        "Alianzas externas con actores del sector inmobiliario impulsaron tráfico adicional al sitio web."
+      ]
+    },
+    {
+      "mes": "Abril",
+      "tag": null,
+      "tagClass": null,
+      "items": [
+        "Activación de campañas en Meta enfocadas en conversaciones sobre propiedades privadas y de la SAE.",
+        "Creación de público de retargeting a partir de las visitas al perfil de redes sociales.",
+        "Inversión en pauta aún no reportada por la fuente para este mes."
+      ]
+    }
+  ]
+};
+</script>
+<!-- ================== FIN DEL BLOQUE DE DATOS (MERCADEO) ================== -->
+
+<!-- =====================================================================
+     BLOQUE DE DATOS - BASES DE DATOS
+     El script actualizar_bases_datos.py reemplaza SOLO este bloque
+     (busca el id "bases-data-block"). No lo confundas con el bloque de
+     arriba (mercadeo), que usa otro script y otro id.
+     ===================================================================== -->
+<script id="bases-data-block">
+const BASES_DATA = {
+  "lastUpdated": "2026-08-20",
+  "eventos": [
+    {
+      "nombre": "Registro continuo de Brokers",
+      "archivo": "Base de datos  - Brokers.xlsx (hoja 2)",
+      "periodo": "dic. 2025 – ago. 2026",
+      "registros": 268
+    },
+    {
+      "nombre": "Jornada Comercial Brokers (10 dic)",
+      "archivo": "Base de datos  - Brokers.xlsx (hoja 1)",
+      "periodo": "21 oct.–29 nov. 2025",
+      "registros": 18
+    },
+    {
+      "nombre": "FNA Medellín",
+      "archivo": "Base de datos  Fna-medellin.xlsx",
+      "periodo": "24–26 abr. 2026",
+      "registros": 61
+    },
+    {
+      "nombre": "Open Day Finca Raíz (Bogotá)",
+      "archivo": "Base de datos Open day Finca raiz (Bogota).xlsx",
+      "periodo": "18 abr. 2026",
+      "registros": 56
+    },
+    {
+      "nombre": "Feria Inmobiliaria Ciencuadras (Cartagena)",
+      "archivo": "Base de datos  feria Inmobiliaria Ciencuadras. (Cartagena).xlsx",
+      "periodo": "21–22 may. 2026",
+      "registros": 42
+    },
+    {
+      "nombre": "Feria Inmobiliaria Fincaraíz (Bogotá, mayo)",
+      "archivo": "Base de datos feria Inmobiliaria Fincaraiz (Bogota- mayo).xlsx",
+      "periodo": "7–8 may. 2026",
+      "registros": 36
+    },
+    {
+      "nombre": "Rueda de Negocios Cali",
+      "archivo": "Base de datos Rueda de negocio cali.xlsx",
+      "periodo": "6 may. 2026",
+      "registros": 15
+    }
+  ],
+  "externas": [
+    {
+      "nombre": "Base CRM Odoo Norte",
+      "contenido": "Oportunidades / clientes CRM",
+      "registros": 6614
+    },
+    {
+      "nombre": "Empresarios Atlántico 2",
+      "contenido": "Correos de empresarios",
+      "registros": 4542
+    },
+    {
+      "nombre": "Contactos Periodistas (Santa Marta)",
+      "contenido": "Correos de medios",
+      "registros": 407
+    },
+    {
+      "nombre": "Contactos Periodistas (Barranquilla)",
+      "contenido": "Nombre, medio, teléfono, correo",
+      "registros": 34
+    },
+    {
+      "nombre": "Correos corporativos",
+      "contenido": "Empresa + correo",
+      "registros": 359
+    },
+    {
+      "nombre": "Correos empresarios Atlántico",
+      "contenido": "Correos de empresarios",
+      "registros": 358
+    },
+    {
+      "nombre": "Clientes de venta",
+      "contenido": "Nombre, ciudad, teléfono, correo",
+      "registros": 33
+    }
+  ]
+};
+</script>
+<!-- ================== FIN DEL BLOQUE DE DATOS (BASES DE DATOS) ================== -->
+
+
 <div class="flex min-h-screen">
 
   <!-- ===================== SIDEBAR ===================== -->
@@ -81,12 +487,19 @@
          :class="activeSection==='novedades' ? 'bg-brand-50 text-brand-500' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'">
         <span class="h-1.5 w-1.5 rounded-full bg-current opacity-60"></span> Novedades del mes
       </a>
+
+      <div class="mb-1 mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-gray-400">Otros</div>
+      <a href="#basesdatos" @click="sidebarOpen=false"
+         class="menu-item mb-1 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium"
+         :class="activeSection==='basesdatos' ? 'bg-brand-50 text-brand-500' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'">
+        <span class="h-1.5 w-1.5 rounded-full bg-current opacity-60"></span> Bases de datos
+      </a>
     </nav>
 
     <div class="border-t border-gray-200 px-6 py-4 text-[11.5px] leading-relaxed text-gray-400">
-      <b class="text-gray-500">Última actualización:</b> 19 ago 2026<br>
+      <b class="text-gray-500">Última actualización:</b> <span id="sf-lastUpdated">—</span><br>
       <b class="text-gray-500">Fuentes:</b> PAID MEDIA · SEGUIMIENTO_PORTALES<br>
-      Se actualiza cuando Mercadeo lo solicita.
+      Se actualiza automáticamente lunes a viernes.
     </div>
   </aside>
 
@@ -103,12 +516,12 @@
         </button>
         <div>
           <h1 class="text-lg font-bold text-gray-800">Dashboard de Mercadeo</h1>
-          <p class="text-xs text-gray-400">Pauta digital y portales inmobiliarios · Abril – Agosto 2026</p>
+          <p class="text-xs text-gray-400">Pauta digital y portales inmobiliarios</p>
         </div>
       </div>
       <span class="inline-flex items-center gap-2 rounded-full bg-success-50 px-3 py-1.5 text-xs font-semibold text-success-600">
         <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success-500 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-success-500"></span></span>
-        Datos reales al 19 ago 2026
+        Datos al <span id="sf-badgeDate">—</span>
       </span>
     </header>
 
@@ -118,41 +531,37 @@
       <section id="resumen" class="mb-14 scroll-mt-24">
         <div class="mb-5">
           <div class="mb-1 text-xs font-bold uppercase tracking-wider text-brand-500">Vista general</div>
-          <h2 class="mb-1 text-xl font-bold text-gray-800">Cómo va el mes de julio, en un vistazo</h2>
-          <p class="max-w-2xl text-sm text-gray-500">Los cuatro indicadores más importantes de mercadeo digital, comparados contra el mes anterior. Julio es el último mes con reporte de pauta cerrado.</p>
+          <h2 class="mb-1 text-xl font-bold text-gray-800">Cómo va el último mes, en un vistazo</h2>
+          <p class="max-w-2xl text-sm text-gray-500">Los cuatro indicadores más importantes de mercadeo digital, comparados contra el mes anterior.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          <!-- KPI 1 -->
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-xl">💬</div>
             <div class="mt-4 text-sm text-gray-500">Conversaciones generadas (pauta)</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">1.167</div>
-            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-success-50 px-2 py-0.5 text-xs font-bold text-success-600">▲ 405% vs. junio</span>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-conv-value">—</div>
+            <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-conv-delta"></span>
             <div class="mt-2 text-[11.5px] text-gray-400">Mensajes iniciados en Meta desde anuncios</div>
           </div>
-          <!-- KPI 2 -->
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-xl">📣</div>
             <div class="mt-4 text-sm text-gray-500">Alcance de la pauta (Meta)</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">241.224</div>
-            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-success-50 px-2 py-0.5 text-xs font-bold text-success-600">▲ 85% vs. junio</span>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-alcance-value">—</div>
+            <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-alcance-delta"></span>
             <div class="mt-2 text-[11.5px] text-gray-400">Personas únicas alcanzadas por anuncios</div>
           </div>
-          <!-- KPI 3 -->
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-warning-50 text-xl">💰</div>
             <div class="mt-4 text-sm text-gray-500">Inversión en pauta (todos los canales)</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">$3.784.875</div>
-            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-success-50 px-2 py-0.5 text-xs font-bold text-success-600">▲ 59% vs. junio</span>
-            <div class="mt-2 text-[11.5px] text-gray-400">Meta + Google + TikTok, julio 2026</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-inversion-value">—</div>
+            <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-inversion-delta"></span>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="kpi-inversion-note">Meta + Google + TikTok</div>
           </div>
-          <!-- KPI 4 -->
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-success-50 text-xl">🏠</div>
             <div class="mt-4 text-sm text-gray-500">Leads de portales inmobiliarios</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">181</div>
-            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-success-50 px-2 py-0.5 text-xs font-bold text-success-600">▲ 25% vs. junio</span>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-leads-value">—</div>
+            <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-leads-delta"></span>
             <div class="mt-2 text-[11.5px] text-gray-400">No incluye conversaciones de Meta Ads</div>
           </div>
         </div>
@@ -162,7 +571,7 @@
             <div class="mb-4 flex items-start justify-between gap-3">
               <div>
                 <h3 class="text-sm font-bold text-gray-800">Conversaciones y alcance, mes a mes</h3>
-                <p class="text-xs text-gray-400">Pauta paga en Meta. Julio marca el mejor resultado del año.</p>
+                <p class="text-xs text-gray-400">Pauta paga en Meta</p>
               </div>
             </div>
             <div id="chartResumen"></div>
@@ -170,7 +579,7 @@
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="mb-4">
               <h3 class="text-sm font-bold text-gray-800">Leads por portal (acumulado)</h3>
-              <p class="text-xs text-gray-400">Marzo – agosto 2026, 788 leads en total</p>
+              <p class="text-xs text-gray-400" id="sf-donutSubtitle">—</p>
             </div>
             <div id="chartPortalDonutMini"></div>
           </div>
@@ -197,7 +606,7 @@
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="mb-4">
               <h3 class="text-sm font-bold text-gray-800">Inversión en pauta por mes</h3>
-              <p class="text-xs text-gray-400">Suma de Meta + Google (+ TikTok desde julio)</p>
+              <p class="text-xs text-gray-400">Suma de todos los canales activos ese mes</p>
             </div>
             <table class="w-full text-sm">
               <thead>
@@ -205,76 +614,35 @@
                   <th class="py-2">Mes</th><th class="py-2">Inversión</th><th class="py-2">Variación</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-100">
-                <tr><td class="py-2.5">Abril</td><td class="py-2.5 font-semibold italic text-gray-400">Pendiente</td><td class="py-2.5 text-gray-400">—</td></tr>
-                <tr><td class="py-2.5">Mayo</td><td class="py-2.5 font-semibold tabular-nums">$2.945.868</td><td class="py-2.5 text-gray-400">—</td></tr>
-                <tr><td class="py-2.5">Junio</td><td class="py-2.5 font-semibold tabular-nums">$2.379.558</td><td class="py-2.5 font-bold text-error-500">▼ 19,2%</td></tr>
-                <tr><td class="py-2.5">Julio</td><td class="py-2.5 font-semibold tabular-nums">$3.784.875</td><td class="py-2.5 font-bold text-success-600">▲ 59,1%</td></tr>
-              </tbody>
+              <tbody class="divide-y divide-gray-100" id="tbl-inversion"></tbody>
             </table>
-            <div class="mt-4">
-              <span class="inline-block rounded-full bg-gray-100 px-3 py-1 text-[11.5px] font-semibold text-gray-600">Abril: dato aún no reportado por la fuente</span>
-            </div>
+            <div class="mt-4" id="pill-inversion-note"></div>
           </div>
         </div>
 
         <!-- Tabs "a quién va dirigida" -->
-        <div class="mt-5 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6" x-data="{ tab:'abril' }">
+        <div class="mt-5 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6" x-data="{ tab: DASHBOARD_DATA.pauta.months[DASHBOARD_DATA.pauta.months.length-1] }">
           <div class="mb-4">
             <h3 class="text-sm font-bold text-gray-800">¿A quién va dirigida la pauta cada mes?</h3>
             <p class="text-xs text-gray-400">Enfoque estratégico y detalle de resultados por canal</p>
           </div>
 
           <div class="mb-5 flex flex-wrap gap-2">
-            <button @click="tab='abril'" :class="tab==='abril' ? 'bg-brand-500 text-white border-brand-500' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'" class="rounded-lg border px-4 py-2 text-xs font-semibold">Abril</button>
-            <button @click="tab='mayo'" :class="tab==='mayo' ? 'bg-brand-500 text-white border-brand-500' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'" class="rounded-lg border px-4 py-2 text-xs font-semibold">Mayo</button>
-            <button @click="tab='junio'" :class="tab==='junio' ? 'bg-brand-500 text-white border-brand-500' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'" class="rounded-lg border px-4 py-2 text-xs font-semibold">Junio</button>
-            <button @click="tab='julio'" :class="tab==='julio' ? 'bg-brand-500 text-white border-brand-500' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'" class="rounded-lg border px-4 py-2 text-xs font-semibold">Julio</button>
+            <template x-for="m in DASHBOARD_DATA.pauta.months" :key="m">
+              <button @click="tab=m" :class="tab===m ? 'bg-brand-500 text-white border-brand-500' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'" class="rounded-lg border px-4 py-2 text-xs font-semibold" x-text="m"></button>
+            </template>
           </div>
 
-          <div x-show="tab==='abril'" x-cloak>
-            <p class="text-sm leading-relaxed text-gray-600">Campañas en <b class="text-gray-800">Meta</b> enfocadas en generar conversaciones a partir de piezas publicitarias de propiedades <b class="text-gray-800">privadas y de la SAE</b>. En paralelo, campaña de <b class="text-gray-800">YouTube (Google)</b> orientada a promoción de marca, y creación de un público de retargeting a partir de las visitas al perfil de redes sociales.</p>
-            <div class="mt-4 flex flex-wrap gap-6 border-t border-dashed border-gray-200 pt-4 text-xs text-gray-400">
-              <div>Impresiones Meta<b class="block text-base font-bold text-gray-800">92.275</b></div>
-              <div>Clics Meta<b class="block text-base font-bold text-gray-800">4.797</b></div>
-              <div>CPC Meta<b class="block text-base font-bold text-gray-800">$368</b></div>
-              <div>Impresiones Google<b class="block text-base font-bold text-gray-800">964.397</b></div>
-              <div>CPC Google<b class="block text-base font-bold text-gray-800">$388</b></div>
+          <template x-for="m in DASHBOARD_DATA.pauta.months" :key="m">
+            <div x-show="tab===m" x-cloak>
+              <p class="text-sm leading-relaxed text-gray-600" x-text="DASHBOARD_DATA.pauta.targetText[m]"></p>
+              <div class="mt-4 flex flex-wrap gap-6 border-t border-dashed border-gray-200 pt-4 text-xs text-gray-400">
+                <template x-for="[label, val] in Object.entries(DASHBOARD_DATA.pauta.detalle[m] || {})" :key="label">
+                  <div x-text="label"><b class="block text-base font-bold text-gray-800" x-text="val"></b></div>
+                </template>
+              </div>
             </div>
-          </div>
-
-          <div x-show="tab==='mayo'" x-cloak>
-            <p class="text-sm leading-relaxed text-gray-600">Se mantiene el enfoque en conversaciones sobre propiedades privadas y SAE vía Meta, y promoción de marca vía YouTube. Primer mes con crecimiento fuerte de alcance (+144% vs. abril) tras ampliar la inversión.</p>
-            <div class="mt-4 flex flex-wrap gap-6 border-t border-dashed border-gray-200 pt-4 text-xs text-gray-400">
-              <div>Impresiones Meta<b class="block text-base font-bold text-gray-800">212.919</b></div>
-              <div>Clics Meta<b class="block text-base font-bold text-gray-800">6.260</b></div>
-              <div>CPC Meta<b class="block text-base font-bold text-gray-800">$523</b></div>
-              <div>Interacciones Google<b class="block text-base font-bold text-gray-800">224.699</b></div>
-              <div>CPC Google<b class="block text-base font-bold text-gray-800">$536</b></div>
-            </div>
-          </div>
-
-          <div x-show="tab==='junio'" x-cloak>
-            <p class="text-sm leading-relaxed text-gray-600">Continúa la estrategia de conversaciones sobre el portafolio SAE y privado. Se activó un <b class="text-gray-800">plan de mejora de publicación diaria</b> de inmuebles. El mes se vio afectado por interrupciones de campañas por falta de fondos en el medio de pago, lo que redujo impresiones e inversión frente a mayo.</p>
-            <div class="mt-4 flex flex-wrap gap-6 border-t border-dashed border-gray-200 pt-4 text-xs text-gray-400">
-              <div>Impresiones Meta<b class="block text-base font-bold text-gray-800">230.051</b></div>
-              <div>Clics Meta<b class="block text-base font-bold text-gray-800">3.829</b></div>
-              <div>CPC Meta<b class="block text-base font-bold text-gray-800">$689</b></div>
-              <div>Interacciones Google<b class="block text-base font-bold text-gray-800">75.881</b></div>
-              <div>CPC Google<b class="block text-base font-bold text-gray-800">$536</b></div>
-            </div>
-          </div>
-
-          <div x-show="tab==='julio'" x-cloak>
-            <p class="text-sm leading-relaxed text-gray-600">Mes de mejor desempeño del año: prioriza <b class="text-gray-800">activos estratégicos de más de $1.000 millones</b> y leads calificados. Se incorpora <b class="text-gray-800">Google Max Performance</b> (display, buscador y YouTube Shorts) para maximizar conversión, y <b class="text-gray-800">TikTok</b> se suma con retargeting de visitas al perfil.</p>
-            <div class="mt-4 flex flex-wrap gap-6 border-t border-dashed border-gray-200 pt-4 text-xs text-gray-400">
-              <div>Impresiones Meta<b class="block text-base font-bold text-gray-800">497.855</b></div>
-              <div>Clics Meta<b class="block text-base font-bold text-gray-800">18.088</b></div>
-              <div>Inversión Meta<b class="block text-base font-bold text-gray-800">$2.616.177</b></div>
-              <div>Inversión Google<b class="block text-base font-bold text-gray-800">$710.000</b></div>
-              <div>Inversión TikTok<b class="block text-base font-bold text-gray-800">$458.698</b></div>
-            </div>
-          </div>
+          </template>
         </div>
       </section>
 
@@ -283,36 +651,36 @@
         <div class="mb-5">
           <div class="mb-1 text-xs font-bold uppercase tracking-wider text-brand-500">Portales inmobiliarios</div>
           <h2 class="mb-1 text-xl font-bold text-gray-800">De dónde llegan los leads y qué están buscando</h2>
-          <p class="max-w-2xl text-sm text-gray-500">788 leads acumulados desde marzo de 2026 en Finca Raíz, Proppit, Ciencuadras, Metrocuadrado y Yicela · datos al 19 de agosto de 2026.</p>
+          <p class="max-w-2xl text-sm text-gray-500" id="sf-portalesIntro">—</p>
         </div>
 
         <div class="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-            <div class="text-sm text-gray-500">Total acumulado (mar–ago)</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">788</div>
+            <div class="text-sm text-gray-500">Total acumulado</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-portal-total">—</div>
             <div class="mt-2 text-[11.5px] text-gray-400">Leads de portales inmobiliarios</div>
           </div>
           <div class="rounded-2xl border border-brand-100 bg-brand-25 p-5 shadow-theme-xs">
-            <div class="text-sm text-gray-500">Agosto (mes en curso)</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">62</div>
-            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[11px] font-bold text-brand-500">Corte al 19 de agosto</span>
+            <div class="text-sm text-gray-500" id="sf-mesEnCursoLabel">Mes en curso</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-portal-mescurso">—</div>
+            <span class="mt-2 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[11px] font-bold text-brand-500" id="sf-corteLabel">—</span>
           </div>
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-            <div class="text-sm text-gray-500">Portal líder en agosto</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">Finca Raíz</div>
-            <div class="mt-2 text-[11.5px] text-gray-400">34 leads este mes (55% del total de agosto)</div>
+            <div class="text-sm text-gray-500">Portal líder del mes</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-portal-lider-mes">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="kpi-portal-lider-mes-note">—</div>
           </div>
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
             <div class="text-sm text-gray-500">Portal líder acumulado</div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800">Finca Raíz</div>
-            <div class="mt-2 text-[11.5px] text-gray-400">292 leads desde marzo (37,1% del total)</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-portal-lider-total">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="kpi-portal-lider-total-note">—</div>
           </div>
         </div>
 
         <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
           <div class="mb-4">
             <h3 class="text-sm font-bold text-gray-800">Leads por portal, mes a mes</h3>
-            <p class="text-xs text-gray-400">Marzo – agosto 2026 · la barra de agosto es parcial (mes en curso, corte 19 ago)</p>
+            <p class="text-xs text-gray-400">Un asterisco (*) indica mes en curso, dato parcial</p>
           </div>
           <div id="chartPortalesMes"></div>
         </div>
@@ -321,14 +689,14 @@
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="mb-4">
               <h3 class="text-sm font-bold text-gray-800">Leads por tipo de inmueble</h3>
-              <p class="text-xs text-gray-400">Acumulado marzo – agosto 2026</p>
+              <p class="text-xs text-gray-400">Acumulado desde el inicio del seguimiento</p>
             </div>
             <div id="chartTipoInmueble"></div>
           </div>
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="mb-4">
               <h3 class="text-sm font-bold text-gray-800">Leads: venta vs. arriendo</h3>
-              <p class="text-xs text-gray-400">Acumulado marzo – agosto 2026</p>
+              <p class="text-xs text-gray-400">Acumulado desde el inicio del seguimiento</p>
             </div>
             <div id="chartVentaArriendo"></div>
           </div>
@@ -337,23 +705,17 @@
         <div class="mt-5 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
           <div class="mb-4">
             <h3 class="text-sm font-bold text-gray-800">Detalle por portal</h3>
-            <p class="text-xs text-gray-400">Acumulado desde marzo de 2026, con el corte de agosto (parcial) al lado</p>
+            <p class="text-xs text-gray-400">Acumulado, con el corte del mes en curso al lado</p>
           </div>
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b border-gray-200 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-400">
-                <th class="py-2">Portal</th><th class="py-2">Acumulado (mar–ago)</th><th class="py-2">% del total</th><th class="py-2">Agosto*</th>
+                <th class="py-2">Portal</th><th class="py-2">Acumulado</th><th class="py-2">% del total</th><th class="py-2" id="th-mescurso">Mes en curso*</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100">
-              <tr><td class="py-2.5">Finca Raíz</td><td class="py-2.5 font-semibold tabular-nums">292</td><td class="py-2.5 text-gray-500">37,1%</td><td class="py-2.5 font-semibold tabular-nums text-brand-500">34</td></tr>
-              <tr><td class="py-2.5">Proppit</td><td class="py-2.5 font-semibold tabular-nums">253</td><td class="py-2.5 text-gray-500">32,1%</td><td class="py-2.5 font-semibold tabular-nums text-brand-500">7</td></tr>
-              <tr><td class="py-2.5">Ciencuadras</td><td class="py-2.5 font-semibold tabular-nums">181</td><td class="py-2.5 text-gray-500">23,0%</td><td class="py-2.5 font-semibold tabular-nums text-brand-500">19</td></tr>
-              <tr><td class="py-2.5">Metrocuadrado</td><td class="py-2.5 font-semibold tabular-nums">60</td><td class="py-2.5 text-gray-500">7,6%</td><td class="py-2.5 font-semibold tabular-nums text-brand-500">2</td></tr>
-              <tr><td class="py-2.5">Yicela</td><td class="py-2.5 font-semibold tabular-nums">1</td><td class="py-2.5 text-gray-500">0,1%</td><td class="py-2.5 font-semibold tabular-nums text-brand-500">0</td></tr>
-            </tbody>
+            <tbody class="divide-y divide-gray-100" id="tbl-portales"></tbody>
           </table>
-          <div class="mt-3 text-[11px] text-gray-400">*Agosto: mes en curso, corte al 19 de agosto de 2026.</div>
+          <div class="mt-3 text-[11px] text-gray-400" id="sf-tableFootnote">—</div>
         </div>
       </section>
 
@@ -365,66 +727,86 @@
           <p class="max-w-2xl text-sm text-gray-500">Hechos relevantes que explican las variaciones en los indicadores anteriores.</p>
         </div>
 
-        <div class="flex flex-col">
-          <div class="relative flex gap-4 pb-6">
-            <div class="absolute left-5 top-11 h-full w-px bg-gray-200"></div>
-            <div class="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-[11px] font-extrabold text-brand-500">JUL</div>
-            <div class="flex-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-              <h4 class="mb-2 text-sm font-bold text-gray-800">Julio 2026 <span class="ml-1 rounded-full bg-success-50 px-2 py-0.5 text-[10px] font-bold uppercase text-success-600">Récord del año</span></h4>
-              <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600">
-                <li>Mejor mes del año en conversaciones (1.167), clics (26.180) e impresiones (1.387.197 en pauta).</li>
-                <li>1.558 leads totales generados (Meta + portales), el mejor registro histórico del indicador.</li>
-                <li>Se normalizó la disponibilidad de fondos en el medio de pago, corrigiendo las interrupciones de junio.</li>
-                <li>Lanzamiento de <b class="text-gray-800">Google Max Performance</b> para maximizar alcance y conversión de forma automatizada.</li>
-                <li>Rendición de Cuentas 2025–2026 y apertura de la Agencia Territorial Sur (Cali) impulsaron 17 menciones en medios y 871 piezas gráficas producidas.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="flex flex-col" id="timeline-container"></div>
+      </section>
 
-          <div class="relative flex gap-4 pb-6">
-            <div class="absolute left-5 top-11 h-full w-px bg-gray-200"></div>
-            <div class="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-[11px] font-extrabold text-brand-500">JUN</div>
-            <div class="flex-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-              <h4 class="mb-2 text-sm font-bold text-gray-800">Junio 2026 <span class="ml-1 rounded-full bg-error-50 px-2 py-0.5 text-[10px] font-bold uppercase text-error-500">Alerta operativa</span></h4>
-              <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600">
-                <li>Interrupciones temporales de campañas por indisponibilidad de fondos en el medio de pago: impresiones -29,1% e inversión -19,2% vs. mayo.</li>
-                <li><b class="text-gray-800">Ciencuadras</b> solo permitió publicar inmuebles en arriendo y <b class="text-gray-800">Proppit</b> solo en venta durante el mes, limitando la captación en ambos portales.</li>
-                <li>Se activó un plan de mejora de publicación diaria de inmuebles: 83 inmuebles publicados, +277% vs. mayo.</li>
-              </ul>
-            </div>
-          </div>
+      <!-- ===================== BASES DE DATOS ===================== -->
+      <section id="basesdatos" class="mb-14 scroll-mt-24">
+        <div class="mb-5">
+          <div class="mb-1 text-xs font-bold uppercase tracking-wider text-brand-500">Otros</div>
+          <h2 class="mb-1 text-xl font-bold text-gray-800">Bases de datos</h2>
+          <p class="max-w-2xl text-sm text-gray-500">Inventario de bases generadas en eventos y bases de prospección externa · <span id="bd-lastUpdated">—</span></p>
+        </div>
 
-          <div class="relative flex gap-4 pb-6">
-            <div class="absolute left-5 top-11 h-full w-px bg-gray-200"></div>
-            <div class="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-[11px] font-extrabold text-brand-500">MAY</div>
-            <div class="flex-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-              <h4 class="mb-2 text-sm font-bold text-gray-800">Mayo 2026</h4>
-              <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600">
-                <li>Mejor mes de visualizaciones en redes hasta la fecha: 394.059, +41,7% vs. abril.</li>
-                <li>26 menciones en medios de comunicación, el nivel más alto del semestre.</li>
-                <li>Alianzas externas con actores del sector inmobiliario impulsaron tráfico adicional al sitio web.</li>
-              </ul>
-            </div>
+        <div class="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
+            <div class="text-sm text-gray-500">Bases de datos (archivos)</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="bd-kpi-archivos">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="bd-kpi-tablas">—</div>
           </div>
+          <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
+            <div class="text-sm text-gray-500">Total de registros</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="bd-kpi-total">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400">Contactos y leads acumulados</div>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-brand-25 p-5 shadow-theme-xs">
+            <div class="text-sm text-gray-500">Bases de eventos</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="bd-kpi-eventos">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="bd-kpi-eventos-sub">—</div>
+          </div>
+          <div class="rounded-2xl border border-warning-50 bg-warning-50 p-5 shadow-theme-xs">
+            <div class="text-sm text-gray-500">Bases externas</div>
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="bd-kpi-externas">—</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="bd-kpi-externas-sub">—</div>
+          </div>
+        </div>
 
-          <div class="relative flex gap-4">
-            <div class="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-[11px] font-extrabold text-brand-500">ABR</div>
-            <div class="flex-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
-              <h4 class="mb-2 text-sm font-bold text-gray-800">Abril 2026</h4>
-              <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600">
-                <li>Activación de campañas en Meta enfocadas en conversaciones sobre propiedades privadas y de la SAE.</li>
-                <li>Creación de público de retargeting a partir de las visitas al perfil de redes sociales.</li>
-                <li>Inversión en pauta aún no reportada por la fuente para este mes.</li>
-              </ul>
-            </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
+          <div class="mb-4">
+            <h3 class="text-sm font-bold text-gray-800">Bases de datos por evento</h3>
+            <p class="text-xs text-gray-400">Leads capturados por formularios de registro en cada evento</p>
+          </div>
+          <div id="chartEventos"></div>
+          <div class="mt-5 overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+                  <th class="py-2">Evento</th><th class="py-2">Periodo</th><th class="py-2">Registros</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="bd-tbl-eventos"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
+          <div class="mb-4">
+            <h3 class="text-sm font-bold text-gray-800">Bases de datos externas / prospección</h3>
+            <p class="text-xs text-gray-400">Bases de contactos generales, no ligadas a un evento puntual</p>
+          </div>
+          <div id="chartExternas"></div>
+          <div class="mt-5 overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-left text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+                  <th class="py-2">Base de datos</th><th class="py-2">Contenido</th><th class="py-2">Registros</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="bd-tbl-externas"></tbody>
+            </table>
+          </div>
+          <div class="mt-4 text-[11px] leading-relaxed text-gray-400">
+            <b class="text-gray-500">Brokers:</b> "Base de datos - Brokers.xlsx" contiene dos formularios: uno de la Jornada Comercial del 10 de diciembre (18 registros) y un registro permanente de brokers (268 registros).<br>
+            <b class="text-gray-500">Periodistas:</b> "Base de datos periodista.xlsx" tiene dos hojas (Barranquilla y Santa Marta), reportadas por separado.<br>
+            <b class="text-gray-500">Posible traslape:</b> "Correos empresarios Atlántico" y "Correos corporativos" comparten varios contactos; no se depuraron duplicados entre archivos.
           </div>
         </div>
       </section>
 
       <div class="mt-16 border-t border-gray-200 pt-6 text-xs leading-relaxed text-gray-400">
         <b class="text-gray-500">Fuentes de datos:</b> _PAID MEDIA - Activos por Colombia.xlsx (pauta Meta/Google/TikTok) y SEGUIMIENTO_PORTALES_03-2026.xlsm, pestaña Tablero (leads de portales inmobiliarios), ambos en SharePoint.<br>
-        <b class="text-gray-500">Cómo actualizar:</b> pide a tu asistente de Claude "actualiza el dashboard" — vuelve a leer ambos archivos y regenera este HTML con los datos más recientes.<br>
-        Cifras de leads por portal y tipología acumulan desde marzo de 2026, inicio del seguimiento. Agosto se muestra con datos parciales por ser mes en curso.
+        <b class="text-gray-500">Cómo se actualiza:</b> el script <code>actualizar_dashboard.py</code> corre automáticamente vía el Programador de tareas de Windows, lee ambos archivos y reemplaza el bloque de datos de este HTML. Las secciones de "a quién va dirigida la pauta" y "novedades" se editan a mano en ese mismo bloque.<br>
+        Cifras de leads por portal y tipología acumulan desde el inicio del seguimiento en marzo de 2026.
       </div>
 
     </main>
@@ -434,7 +816,7 @@
 <script>
   // Scrollspy sencillo para resaltar el link activo del sidebar
   (function(){
-    const ids = ['resumen','pauta','portales','novedades'];
+    const ids = ['resumen','pauta','portales','novedades','basesdatos'];
     const els = ids.map(id => document.getElementById(id));
     window.addEventListener('scroll', () => {
       let current = 'resumen';
@@ -445,99 +827,207 @@
 </script>
 
 <script>
-  const brand = '#465FFF', violet = '#7A5AF8', amber = '#F79009', green = '#12B76A', red = '#F04438', gray = '#98A2B3';
-  const fmt = n => new Intl.NumberFormat('es-CO').format(n);
+  const brand='#465FFF', violet='#7A5AF8', amber='#F79009', green='#12B76A', red='#F04438';
+  const fmtInt = n => n==null ? '—' : new Intl.NumberFormat('es-CO').format(n);
+  const fmtMoney = n => n==null ? 'Pendiente' : '$'+new Intl.NumberFormat('es-CO').format(n);
+  const fmtDateEs = iso => { const [y,m,d]=iso.split('-'); const meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']; return `${parseInt(d)} ${meses[parseInt(m)-1]} ${y}`; };
 
-  const baseFont = { fontFamily: 'Inter, sans-serif' };
+  function deltaBadge(el, pct){
+    if (pct==null || isNaN(pct)) { el.className='hidden'; return; }
+    const up = pct >= 0;
+    el.textContent = (up?'▲ ':'▼ ') + Math.abs(pct).toFixed(pct % 1 === 0 ? 0 : 1).replace('.0','') + '% vs. mes anterior';
+    el.className = 'mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold ' + (up ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-500');
+  }
+  function pctDelta(curr, prev){ if (curr==null || prev==null || prev===0) return null; return (curr-prev)/prev*100; }
 
-  // ---- Resumen: conversaciones + alcance (dual axis) ----
-  new ApexCharts(document.querySelector('#chartResumen'), {
-    chart: { type:'area', height:260, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
-    series: [
-      { name:'Conversaciones', data:[195,231,231,1167] },
-      { name:'Alcance', data:[51904,127155,130237,241224] }
-    ],
-    colors: [brand, amber],
-    stroke: { curve:'smooth', width:2.5 },
-    fill: { type:'gradient', gradient:{ opacityFrom:0.25, opacityTo:0.02 } },
-    dataLabels: { enabled:false },
-    xaxis: { categories:['Abril','Mayo','Junio','Julio'], axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
-    yaxis: [
-      { seriesName:'Conversaciones', labels:{formatter:v=>fmt(v),style:{colors:'#667085',fontSize:'11px'}} },
-      { seriesName:'Alcance', opposite:true, labels:{formatter:v=>fmt(v),style:{colors:'#667085',fontSize:'11px'}} }
-    ],
-    grid: { borderColor:'#F2F4F7' },
-    legend: { position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} },
-    tooltip: { y:{ formatter:v=>fmt(v) } }
-  }).render();
+  function render(data){
+    const p = data.pauta, port = data.portales;
+    const li = p.months.length - 1, pi = li - 1;
 
-  // ---- Resumen: mini donut portales ----
-  new ApexCharts(document.querySelector('#chartPortalDonutMini'), {
-    chart: { type:'donut', height:260, fontFamily:'Inter, sans-serif' },
-    series: [292,253,181,60,1],
-    labels: ['Finca Raíz','Proppit','Ciencuadras','Metrocuadrado','Yicela'],
-    colors: [brand, violet, amber, green, '#D0D5DD'],
-    dataLabels: { enabled:false },
-    legend: { position:'bottom', fontSize:'12px', markers:{radius:99} },
-    plotOptions: { pie:{ donut:{ size:'68%', labels:{ show:true, total:{ show:true, label:'Total leads', fontSize:'12px', color:'#667085', formatter:()=> '788' } } } } },
-    stroke: { width:0 }
-  }).render();
+    document.getElementById('sf-lastUpdated').textContent = fmtDateEs(data.lastUpdated);
+    document.getElementById('sf-badgeDate').textContent = fmtDateEs(data.lastUpdated);
 
-  // ---- Pauta: conversaciones bar ----
-  new ApexCharts(document.querySelector('#chartConversaciones'), {
-    chart: { type:'bar', height:300, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
-    series: [{ name:'Conversaciones', data:[195,231,231,1167] }],
-    colors: [brand],
-    plotOptions: { bar:{ borderRadius:8, columnWidth:'45%' } },
-    dataLabels: { enabled:false },
-    xaxis: { categories:['Abril','Mayo','Junio','Julio'], axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
-    yaxis: { labels:{formatter:v=>fmt(v),style:{colors:'#667085',fontSize:'11px'}} },
-    grid: { borderColor:'#F2F4F7' },
-    tooltip: { y:{ formatter:v=>fmt(v)+' conversaciones' } }
-  }).render();
+    // KPIs resumen
+    document.getElementById('kpi-conv-value').textContent = fmtInt(p.conversaciones[li]);
+    deltaBadge(document.getElementById('kpi-conv-delta'), pctDelta(p.conversaciones[li], p.conversaciones[pi]));
 
-  // ---- Portales: leads por mes y portal (stacked) ----
-  new ApexCharts(document.querySelector('#chartPortalesMes'), {
-    chart: { type:'bar', height:300, stacked:true, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
-    series: [
-      { name:'Finca Raíz', data:[4,19,21,64,150,34] },
-      { name:'Proppit', data:[26,36,124,50,10,7] },
-      { name:'Ciencuadras', data:[24,57,48,24,9,19] },
-      { name:'Metrocuadrado', data:[12,11,17,7,11,2] }
-    ],
-    colors: [brand, violet, amber, green],
-    plotOptions: { bar:{ borderRadius:5, columnWidth:'55%' } },
-    dataLabels: { enabled:false },
-    xaxis: { categories:['Marzo','Abril','Mayo','Junio','Julio','Agosto*'], axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
-    yaxis: { labels:{formatter:v=>fmt(v),style:{colors:'#667085',fontSize:'11px'}} },
-    grid: { borderColor:'#F2F4F7' },
-    legend: { position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} }
-  }).render();
+    document.getElementById('kpi-alcance-value').textContent = fmtInt(p.alcanceMeta[li]);
+    deltaBadge(document.getElementById('kpi-alcance-delta'), pctDelta(p.alcanceMeta[li], p.alcanceMeta[pi]));
 
-  // ---- Portales: tipo de inmueble ----
-  new ApexCharts(document.querySelector('#chartTipoInmueble'), {
-    chart: { type:'donut', height:300, fontFamily:'Inter, sans-serif' },
-    series: [511,110,62,42,34,23,3,2,1],
-    labels: ['Apartamento','Lote','Casa','Bodega','Local comercial','Oficina','Apartaestudio','Cabaña','Casa campestre'],
-    colors: [brand, violet, amber, green, red, '#0BA5EC', '#EE46BC', '#F97066', '#98A2B3'],
-    dataLabels: { enabled:false },
-    legend: { position:'right', fontSize:'11.5px', markers:{radius:99}, itemMargin:{vertical:3} },
-    plotOptions: { pie:{ donut:{ size:'60%' } } },
-    stroke: { width:0 }
-  }).render();
+    document.getElementById('kpi-inversion-value').textContent = fmtMoney(p.inversionTotal[li]);
+    deltaBadge(document.getElementById('kpi-inversion-delta'), p.inversionVariacion[li]);
+    document.getElementById('kpi-inversion-note').textContent = `Todos los canales activos, ${p.months[li]} 2026`;
 
-  // ---- Portales: venta vs arriendo ----
-  new ApexCharts(document.querySelector('#chartVentaArriendo'), {
-    chart: { type:'bar', height:300, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
-    series: [{ name:'Leads', data:[414,72,197,105] }],
-    colors: [amber, '#FDB022', brand, '#7A93FF'],
-    plotOptions: { bar:{ horizontal:true, borderRadius:8, barHeight:'55%', distributed:true } },
-    dataLabels: { enabled:true, style:{ colors:['#344054'], fontWeight:700, fontSize:'12px' }, offsetX:8, formatter:v=>fmt(v) },
-    legend: { show:false },
-    xaxis: { categories:['Admin / Arriendo SAE','Arriendo privado','Venta SAE','Venta'], labels:{formatter:v=>fmt(v),style:{colors:'#667085',fontSize:'11px'}} },
-    grid: { borderColor:'#F2F4F7' },
-    tooltip: { y:{ formatter:v=>fmt(v)+' leads' } }
-  }).render();
+    const leadsMesArr = port.leadsPorMes.leads, leadsMeses = port.leadsPorMes.meses;
+    const lastLeadsIdx = leadsMesArr.length - 1;
+    document.getElementById('kpi-leads-value').textContent = fmtInt(leadsMesArr[lastLeadsIdx]);
+    deltaBadge(document.getElementById('kpi-leads-delta'), pctDelta(leadsMesArr[lastLeadsIdx], leadsMesArr[lastLeadsIdx-1]));
+
+    document.getElementById('sf-donutSubtitle').textContent = `Desde el inicio del seguimiento, ${fmtInt(port.totalAcumulado)} leads en total`;
+
+    // Tabla inversión
+    const tblInv = document.getElementById('tbl-inversion');
+    tblInv.innerHTML = p.months.map((m,i) => {
+      const inv = p.inversionTotal[i], vr = p.inversionVariacion[i];
+      const vrHtml = vr==null ? '<span class="text-gray-400">—</span>' :
+        `<span class="font-bold ${vr>=0?'text-success-600':'text-error-500'}">${vr>=0?'▲':'▼'} ${Math.abs(vr).toFixed(1)}%</span>`;
+      return `<tr><td class="py-2.5">${m}</td><td class="py-2.5 font-semibold tabular-nums ${inv==null?'italic text-gray-400':''}">${fmtMoney(inv)}</td><td class="py-2.5">${vrHtml}</td></tr>`;
+    }).join('');
+    const pendMonths = p.months.filter((m,i)=>p.inversionTotal[i]==null);
+    document.getElementById('pill-inversion-note').innerHTML = pendMonths.length
+      ? `<span class="inline-block rounded-full bg-gray-100 px-3 py-1 text-[11.5px] font-semibold text-gray-600">${pendMonths.join(', ')}: dato aún no reportado por la fuente</span>` : '';
+
+    // Portales intro + KPIs
+    document.getElementById('sf-portalesIntro').textContent = `${fmtInt(port.totalAcumulado)} leads acumulados en ${port.porPortalAcumulado.map(x=>x.portal).join(', ')} · datos al ${port.corteLabel}.`;
+    document.getElementById('kpi-portal-total').textContent = fmtInt(port.totalAcumulado);
+    document.getElementById('sf-mesEnCursoLabel').textContent = `${port.mesEnCurso} (mes en curso)`;
+    const mesCursoTotal = Object.values(port.mesEnCursoPorPortal).reduce((a,b)=>a+b,0);
+    document.getElementById('kpi-portal-mescurso').textContent = fmtInt(mesCursoTotal);
+    document.getElementById('sf-corteLabel').textContent = `Corte al ${port.corteLabel}`;
+
+    const liderMes = Object.entries(port.mesEnCursoPorPortal).sort((a,b)=>b[1]-a[1])[0];
+    document.getElementById('kpi-portal-lider-mes').textContent = liderMes[0];
+    document.getElementById('kpi-portal-lider-mes-note').textContent = `${liderMes[1]} leads este mes (${mesCursoTotal? (liderMes[1]/mesCursoTotal*100).toFixed(0):0}% del total del mes)`;
+
+    const liderTotal = [...port.porPortalAcumulado].sort((a,b)=>b.leads-a.leads)[0];
+    document.getElementById('kpi-portal-lider-total').textContent = liderTotal.portal;
+    document.getElementById('kpi-portal-lider-total-note').textContent = `${fmtInt(liderTotal.leads)} leads acumulados (${liderTotal.pct}% del total)`;
+
+    document.getElementById('th-mescurso').textContent = port.mesEnCurso + '*';
+    document.getElementById('tbl-portales').innerHTML = port.porPortalAcumulado.map(row => `
+      <tr><td class="py-2.5">${row.portal}</td><td class="py-2.5 font-semibold tabular-nums">${fmtInt(row.leads)}</td>
+      <td class="py-2.5 text-gray-500">${row.pct}%</td>
+      <td class="py-2.5 font-semibold tabular-nums text-brand-500">${fmtInt(port.mesEnCursoPorPortal[row.portal] ?? 0)}</td></tr>`).join('');
+    document.getElementById('sf-tableFootnote').textContent = `*${port.mesEnCurso}: mes en curso, corte al ${port.corteLabel}.`;
+
+    // Timeline novedades
+    document.getElementById('timeline-container').innerHTML = data.novedades.map((n,i) => {
+      const isLast = i === data.novedades.length - 1;
+      const tagColors = { success:'bg-success-50 text-success-600', error:'bg-error-50 text-error-500', violet:'bg-violet-50 text-violet-500' };
+      const tagHtml = n.tag ? `<span class="ml-1 rounded-full ${tagColors[n.tagClass]||tagColors.violet} px-2 py-0.5 text-[10px] font-bold uppercase">${n.tag}</span>` : '';
+      return `
+      <div class="relative flex gap-4 ${isLast?'':'pb-6'}">
+        ${isLast?'':'<div class="absolute left-5 top-11 h-full w-px bg-gray-200"></div>'}
+        <div class="z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-[11px] font-extrabold text-brand-500">${n.mes.slice(0,3).toUpperCase()}</div>
+        <div class="flex-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs">
+          <h4 class="mb-2 text-sm font-bold text-gray-800">${n.mes} 2026 ${tagHtml}</h4>
+          <ul class="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600">
+            ${n.items.map(it => `<li>${it}</li>`).join('')}
+          </ul>
+        </div>
+      </div>`;
+    }).join('');
+
+    // ---- Charts ----
+    new ApexCharts(document.querySelector('#chartResumen'), {
+      chart:{ type:'area', height:260, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series:[{ name:'Conversaciones', data:p.conversaciones },{ name:'Alcance', data:p.alcanceMeta }],
+      colors:[brand, amber], stroke:{ curve:'smooth', width:2.5 },
+      fill:{ type:'gradient', gradient:{ opacityFrom:0.25, opacityTo:0.02 } }, dataLabels:{ enabled:false },
+      xaxis:{ categories:p.months, axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
+      yaxis:[{ seriesName:'Conversaciones', labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+             { seriesName:'Alcance', opposite:true, labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} }],
+      grid:{ borderColor:'#F2F4F7' }, legend:{ position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} },
+      tooltip:{ y:{ formatter:v=>fmtInt(v) } }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartPortalDonutMini'), {
+      chart:{ type:'donut', height:260, fontFamily:'Inter, sans-serif' },
+      series: port.porPortalAcumulado.map(x=>x.leads), labels: port.porPortalAcumulado.map(x=>x.portal),
+      colors:[brand, violet, amber, green, '#D0D5DD'], dataLabels:{ enabled:false },
+      legend:{ position:'bottom', fontSize:'12px', markers:{radius:99} },
+      plotOptions:{ pie:{ donut:{ size:'68%', labels:{ show:true, total:{ show:true, label:'Total leads', fontSize:'12px', color:'#667085', formatter:()=> fmtInt(port.totalAcumulado) } } } } },
+      stroke:{ width:0 }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartConversaciones'), {
+      chart:{ type:'bar', height:300, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series:[{ name:'Conversaciones', data:p.conversaciones }], colors:[brand],
+      plotOptions:{ bar:{ borderRadius:8, columnWidth:'45%' } }, dataLabels:{ enabled:false },
+      xaxis:{ categories:p.months, axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
+      yaxis:{ labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+      grid:{ borderColor:'#F2F4F7' }, tooltip:{ y:{ formatter:v=>fmtInt(v)+' conversaciones' } }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartPortalesMes'), {
+      chart:{ type:'bar', height:300, stacked:true, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series: port.porMesYPortal.series, colors:[brand, violet, amber, green],
+      plotOptions:{ bar:{ borderRadius:5, columnWidth:'55%' } }, dataLabels:{ enabled:false },
+      xaxis:{ categories:port.porMesYPortal.meses, axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
+      yaxis:{ labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+      grid:{ borderColor:'#F2F4F7' }, legend:{ position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartTipoInmueble'), {
+      chart:{ type:'donut', height:300, fontFamily:'Inter, sans-serif' },
+      series: port.porTipoInmueble.map(x=>x.leads), labels: port.porTipoInmueble.map(x=>x.tipo),
+      colors:[brand, violet, amber, green, red, '#0BA5EC', '#EE46BC', '#F97066', '#98A2B3'], dataLabels:{ enabled:false },
+      legend:{ position:'right', fontSize:'11.5px', markers:{radius:99}, itemMargin:{vertical:3} },
+      plotOptions:{ pie:{ donut:{ size:'60%' } } }, stroke:{ width:0 }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartVentaArriendo'), {
+      chart:{ type:'bar', height:300, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series:[{ name:'Leads', data: port.porVentaArriendo.map(x=>x.leads) }],
+      colors:[amber, '#FDB022', brand, '#7A93FF'],
+      plotOptions:{ bar:{ horizontal:true, borderRadius:8, barHeight:'55%', distributed:true } },
+      dataLabels:{ enabled:true, style:{ colors:['#344054'], fontWeight:700, fontSize:'12px' }, offsetX:8, formatter:v=>fmtInt(v) },
+      legend:{ show:false },
+      xaxis:{ categories: port.porVentaArriendo.map(x=>x.modalidad), labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+      grid:{ borderColor:'#F2F4F7' }, tooltip:{ y:{ formatter:v=>fmtInt(v)+' leads' } }
+    }).render();
+  }
+
+  render(DASHBOARD_DATA);
+
+  // ---- Bases de datos ----
+  function renderBases(data){
+    const fmtDateEs = iso => { const [y,m,d]=iso.split('-'); const meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']; return `${parseInt(d)} ${meses[parseInt(m)-1]}. ${y}`; };
+    const eventos = [...data.eventos].sort((a,b)=>b.registros-a.registros);
+    const externas = [...data.externas].sort((a,b)=>b.registros-a.registros);
+    const totalEventos = eventos.reduce((s,e)=>s+e.registros,0);
+    const totalExternas = externas.reduce((s,e)=>s+e.registros,0);
+    const archivosEventos = new Set(eventos.map(e=>e.archivo.replace(/\s*\(hoja.*\)/,''))).size;
+
+    document.getElementById('bd-lastUpdated').textContent = 'datos al ' + fmtDateEs(data.lastUpdated);
+    document.getElementById('bd-kpi-archivos').textContent = fmtInt(archivosEventos + externas.length);
+    document.getElementById('bd-kpi-tablas').textContent = `${eventos.length + externas.length} tablas / hojas de respuestas`;
+    document.getElementById('bd-kpi-total').textContent = fmtInt(totalEventos + totalExternas);
+    document.getElementById('bd-kpi-eventos').textContent = fmtInt(totalEventos);
+    document.getElementById('bd-kpi-eventos-sub').textContent = `${archivosEventos} archivos · ${eventos.length} tablas`;
+    document.getElementById('bd-kpi-externas').textContent = fmtInt(totalExternas);
+    document.getElementById('bd-kpi-externas-sub').textContent = `${externas.length} archivos · ${externas.length} tablas`;
+
+    document.getElementById('bd-tbl-eventos').innerHTML = eventos.map(e => `
+      <tr><td class="py-2.5">${e.nombre}<span class="block text-[11px] text-gray-400">${e.archivo}</span></td>
+      <td class="py-2.5 text-gray-500">${e.periodo}</td>
+      <td class="py-2.5 font-semibold tabular-nums">${fmtInt(e.registros)}</td></tr>`).join('')
+      + `<tr><td class="py-2.5 font-bold">Total</td><td></td><td class="py-2.5 font-bold tabular-nums">${fmtInt(totalEventos)}</td></tr>`;
+
+    document.getElementById('bd-tbl-externas').innerHTML = externas.map(e => `
+      <tr><td class="py-2.5">${e.nombre}</td><td class="py-2.5 text-gray-500">${e.contenido}</td>
+      <td class="py-2.5 font-semibold tabular-nums">${fmtInt(e.registros)}</td></tr>`).join('')
+      + `<tr><td class="py-2.5 font-bold">Total</td><td></td><td class="py-2.5 font-bold tabular-nums">${fmtInt(totalExternas)}</td></tr>`;
+
+    new ApexCharts(document.querySelector('#chartEventos'), {
+      chart:{ type:'bar', height: Math.max(220, eventos.length*42), toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series:[{ name:'Registros', data: eventos.map(e=>e.registros) }], colors:[brand],
+      plotOptions:{ bar:{ horizontal:true, borderRadius:6, barHeight:'55%' } },
+      dataLabels:{ enabled:true, style:{ colors:['#344054'], fontWeight:700, fontSize:'12px' }, offsetX:8, formatter:v=>fmtInt(v) },
+      xaxis:{ categories: eventos.map(e=>e.nombre), labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+      grid:{ borderColor:'#F2F4F7' }, tooltip:{ y:{ formatter:v=>fmtInt(v)+' registros' } }
+    }).render();
+
+    new ApexCharts(document.querySelector('#chartExternas'), {
+      chart:{ type:'bar', height: Math.max(220, externas.length*42), toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
+      series:[{ name:'Registros', data: externas.map(e=>e.registros) }], colors:[amber],
+      plotOptions:{ bar:{ horizontal:true, borderRadius:6, barHeight:'55%' } },
+      dataLabels:{ enabled:true, style:{ colors:['#344054'], fontWeight:700, fontSize:'12px' }, offsetX:8, formatter:v=>fmtInt(v) },
+      xaxis:{ categories: externas.map(e=>e.nombre), labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
+      grid:{ borderColor:'#F2F4F7' }, tooltip:{ y:{ formatter:v=>fmtInt(v)+' registros' } }
+    }).render();
+  }
+  renderBases(BASES_DATA);
 </script>
 
 </body>
