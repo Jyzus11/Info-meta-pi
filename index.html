@@ -52,81 +52,322 @@
      ===================================================================== -->
 <script id="dashboard-data-block">
 const DASHBOARD_DATA = {
-  "lastUpdated": "2026-08-19",
+  "lastUpdated": "2026-08-20",
   "pauta": {
-    "months": ["Abril","Mayo","Junio","Julio"],
-    "conversaciones": [195,231,231,1167],
-    "alcanceMeta": [51904,127155,130237,241224],
-    "inversionTotal": [null,2945868,2379558,3784875],
-    "inversionVariacion": [null,null,-19.2,59.1],
+    "months": [
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio"
+    ],
+    "conversaciones": [
+      null,
+      195,
+      195,
+      263,
+      1167
+    ],
+    "alcanceMeta": [
+      null,
+      51904,
+      127155,
+      130237,
+      241224
+    ],
+    "inversionTotal": [
+      null,
+      null,
+      458698,
+      null,
+      3784875
+    ],
+    "inversionVariacion": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
     "targetText": {
       "Abril": "Campañas en Meta enfocadas en generar conversaciones a partir de piezas publicitarias de propiedades privadas y de la SAE. En paralelo, campaña de YouTube (Google) orientada a promoción de marca, y creación de un público de retargeting a partir de las visitas al perfil de redes sociales.",
       "Mayo": "Se mantiene el enfoque en conversaciones sobre propiedades privadas y SAE vía Meta, y promoción de marca vía YouTube. Primer mes con crecimiento fuerte de alcance (+144% vs. abril) tras ampliar la inversión.",
       "Junio": "Continúa la estrategia de conversaciones sobre el portafolio SAE y privado. Se activó un plan de mejora de publicación diaria de inmuebles. El mes se vio afectado por interrupciones de campañas por falta de fondos en el medio de pago, lo que redujo impresiones e inversión frente a mayo.",
-      "Julio": "Mes de mejor desempeño del año: prioriza activos estratégicos de más de $1.000 millones y leads calificados. Se incorpora Google Max Performance (display, buscador y YouTube Shorts) para maximizar conversión, y TikTok se suma con retargeting de visitas al perfil."
+      "Julio": "Mes de mejor desempeño del año: prioriza activos estratégicos de más de $1.000 millones y leads calificados. Se incorpora Google Max Performance (display, buscador y YouTube Shorts) para maximizar conversión, y TikTok se suma con retargeting de visitas al perfil.",
+      "Marzo": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)"
     },
     "detalle": {
-      "Abril": {"Impresiones Meta":92275,"Clics Meta":4797,"CPC Meta":"$368","Impresiones Google":964397,"CPC Google":"$388"},
-      "Mayo": {"Impresiones Meta":212919,"Clics Meta":6260,"CPC Meta":"$523","Interacciones Google":224699,"CPC Google":"$536"},
-      "Junio": {"Impresiones Meta":230051,"Clics Meta":3829,"CPC Meta":"$689","Interacciones Google":75881,"CPC Google":"$536"},
-      "Julio": {"Impresiones Meta":497855,"Clics Meta":18088,"Inversión Meta":"$2.616.177","Inversión Google":"$710.000","Inversión TikTok":"$458.698"}
+      "Abril": {
+        "Impresiones Meta": 92275,
+        "Clics Meta": 4797,
+        "CPC Meta": 368,
+        "Impresiones Google": 964397,
+        "CPC Google": 388
+      },
+      "Mayo": {
+        "Impresiones Meta": 212919,
+        "Clics Meta": 6260,
+        "CPC Meta": 523,
+        "Impresiones Google": 312257,
+        "Interacciones Google": 224699,
+        "CPC Google": 536,
+        "Inversión Tiktok": "$458.698"
+      },
+      "Junio": {
+        "Impresiones Meta": 230051,
+        "Clics Meta": 3829,
+        "CPC Meta": 689,
+        "Impresiones Google": 97903,
+        "Interacciones Google": 75881,
+        "CPC Google": 536
+      },
+      "Julio": {
+        "Impresiones Meta": 497855,
+        "Clics Meta": 18088,
+        "CPC Meta": 256,
+        "Inversión Meta": "$2.616.177",
+        "Impresiones Google": 594631,
+        "Interacciones Google": 75881,
+        "CPC Google": 128,
+        "Inversión Google": "$710.000",
+        "Inversión Tiktok": "$458.698"
+      },
+      "Marzo": {}
+    },
+    "inversionPorCanal": {
+      "Tiktok": [
+        null,
+        null,
+        458698,
+        null,
+        458698
+      ],
+      "Meta": [
+        null,
+        null,
+        null,
+        null,
+        2616177
+      ],
+      "Google": [
+        null,
+        null,
+        null,
+        null,
+        710000
+      ]
     }
   },
   "portales": {
-    "corteLabel": "19 de agosto de 2026",
+    "corteLabel": "20 de agosto de 2026",
     "mesEnCurso": "Agosto",
-    "totalAcumulado": 788,
+    "totalAcumulado": 800,
     "porPortalAcumulado": [
-      {"portal":"Finca Raíz","leads":292,"pct":37.1},
-      {"portal":"Proppit","leads":253,"pct":32.1},
-      {"portal":"Ciencuadras","leads":181,"pct":23.0},
-      {"portal":"Metrocuadrado","leads":60,"pct":7.6},
-      {"portal":"Yicela","leads":1,"pct":0.1}
+      {
+        "portal": "Finca Raíz",
+        "leads": 303,
+        "pct": 37.9
+      },
+      {
+        "portal": "Proppit",
+        "leads": 253,
+        "pct": 31.6
+      },
+      {
+        "portal": "Ciencuadras",
+        "leads": 181,
+        "pct": 22.6
+      },
+      {
+        "portal": "Metrocuadrado",
+        "leads": 61,
+        "pct": 7.6
+      }
     ],
-    "mesEnCursoPorPortal": {"Finca Raíz":34,"Proppit":7,"Ciencuadras":19,"Metrocuadrado":2,"Yicela":0},
+    "mesEnCursoPorPortal": {
+      "Finca Raíz": 45,
+      "Proppit": 7,
+      "Ciencuadras": 19,
+      "Metrocuadrado": 3
+    },
     "porMesYPortal": {
-      "meses": ["Marzo","Abril","Mayo","Junio","Julio","Agosto*"],
+      "meses": [
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto*"
+      ],
       "series": [
-        {"name":"Finca Raíz","data":[4,19,21,64,150,34]},
-        {"name":"Proppit","data":[26,36,124,50,10,7]},
-        {"name":"Ciencuadras","data":[24,57,48,24,9,19]},
-        {"name":"Metrocuadrado","data":[12,11,17,7,11,2]}
+        {
+          "name": "Finca Raíz",
+          "data": [
+            4,
+            19,
+            21,
+            64,
+            150,
+            45
+          ]
+        },
+        {
+          "name": "Proppit",
+          "data": [
+            26,
+            36,
+            124,
+            50,
+            10,
+            7
+          ]
+        },
+        {
+          "name": "Ciencuadras",
+          "data": [
+            24,
+            57,
+            48,
+            24,
+            9,
+            19
+          ]
+        },
+        {
+          "name": "Metrocuadrado",
+          "data": [
+            12,
+            11,
+            17,
+            7,
+            11,
+            3
+          ]
+        }
       ]
     },
-    "leadsPorMes": {"meses":["Marzo","Abril","Mayo","Junio","Julio","Agosto"],"leads":[66,123,211,145,181,62]},
+    "leadsPorMes": {
+      "meses": [
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto"
+      ],
+      "leads": [
+        66,
+        123,
+        211,
+        145,
+        181,
+        74
+      ]
+    },
     "porTipoInmueble": [
-      {"tipo":"Apartamento","leads":511},{"tipo":"Lote","leads":110},{"tipo":"Casa","leads":62},
-      {"tipo":"Bodega","leads":42},{"tipo":"Local comercial","leads":34},{"tipo":"Oficina","leads":23},
-      {"tipo":"Apartaestudio","leads":3},{"tipo":"Cabaña","leads":2},{"tipo":"Casa campestre","leads":1}
+      {
+        "tipo": "Apartamento",
+        "leads": 514
+      },
+      {
+        "tipo": "Lote",
+        "leads": 114
+      },
+      {
+        "tipo": "Casa",
+        "leads": 63
+      },
+      {
+        "tipo": "Bodega",
+        "leads": 45
+      },
+      {
+        "tipo": "Local Comercial",
+        "leads": 35
+      },
+      {
+        "tipo": "Oficina",
+        "leads": 22
+      },
+      {
+        "tipo": "Apartaestudio",
+        "leads": 3
+      },
+      {
+        "tipo": "Cabaña",
+        "leads": 2
+      },
+      {
+        "tipo": "Ofcina",
+        "leads": 1
+      },
+      {
+        "tipo": "Casa Campestre",
+        "leads": 1
+      }
     ],
     "porVentaArriendo": [
-      {"modalidad":"Admin / Arriendo SAE","leads":414},{"modalidad":"Arriendo privado","leads":72},
-      {"modalidad":"Venta SAE","leads":197},{"modalidad":"Venta","leads":105}
+      {
+        "modalidad": "Admin / Arriendo SAE",
+        "leads": 414
+      },
+      {
+        "modalidad": "Venta SAE",
+        "leads": 206
+      },
+      {
+        "modalidad": "Venta",
+        "leads": 106
+      },
+      {
+        "modalidad": "Arriendo Privado",
+        "leads": 74
+      }
     ]
   },
   "novedades": [
-    {"mes":"Julio","tag":"Récord del año","tagClass":"success","items":[
-      "Mejor mes del año en conversaciones (1.167), clics (26.180) e impresiones (1.387.197 en pauta).",
-      "1.558 leads totales generados (Meta + portales), el mejor registro histórico del indicador.",
-      "Se normalizó la disponibilidad de fondos en el medio de pago, corrigiendo las interrupciones de junio.",
-      "Lanzamiento de Google Max Performance para maximizar alcance y conversión de forma automatizada.",
-      "Rendición de Cuentas 2025–2026 y apertura de la Agencia Territorial Sur (Cali) impulsaron 17 menciones en medios y 871 piezas gráficas producidas."
-    ]},
-    {"mes":"Junio","tag":"Alerta operativa","tagClass":"error","items":[
-      "Interrupciones temporales de campañas por indisponibilidad de fondos en el medio de pago: impresiones -29,1% e inversión -19,2% vs. mayo.",
-      "Ciencuadras solo permitió publicar inmuebles en arriendo y Proppit solo en venta durante el mes, limitando la captación en ambos portales.",
-      "Se activó un plan de mejora de publicación diaria de inmuebles: 83 inmuebles publicados, +277% vs. mayo."
-    ]},
-    {"mes":"Mayo","tag":null,"tagClass":null,"items":[
-      "Mejor mes de visualizaciones en redes hasta la fecha: 394.059, +41,7% vs. abril.",
-      "26 menciones en medios de comunicación, el nivel más alto del semestre.",
-      "Alianzas externas con actores del sector inmobiliario impulsaron tráfico adicional al sitio web."
-    ]},
-    {"mes":"Abril","tag":null,"tagClass":null,"items":[
-      "Activación de campañas en Meta enfocadas en conversaciones sobre propiedades privadas y de la SAE.",
-      "Creación de público de retargeting a partir de las visitas al perfil de redes sociales.",
-      "Inversión en pauta aún no reportada por la fuente para este mes."
-    ]}
+    {
+      "mes": "Julio",
+      "tag": "Récord del año",
+      "tagClass": "success",
+      "items": [
+        "Mejor mes del año en conversaciones (1.167), clics (26.180) e impresiones (1.387.197 en pauta).",
+        "1.558 leads totales generados (Meta + portales), el mejor registro histórico del indicador.",
+        "Se normalizó la disponibilidad de fondos en el medio de pago, corrigiendo las interrupciones de junio.",
+        "Lanzamiento de Google Max Performance para maximizar alcance y conversión de forma automatizada.",
+        "Rendición de Cuentas 2025–2026 y apertura de la Agencia Territorial Sur (Cali) impulsaron 17 menciones en medios y 871 piezas gráficas producidas."
+      ]
+    },
+    {
+      "mes": "Junio",
+      "tag": "Alerta operativa",
+      "tagClass": "error",
+      "items": [
+        "Interrupciones temporales de campañas por indisponibilidad de fondos en el medio de pago: impresiones -29,1% e inversión -19,2% vs. mayo.",
+        "Ciencuadras solo permitió publicar inmuebles en arriendo y Proppit solo en venta durante el mes, limitando la captación en ambos portales.",
+        "Se activó un plan de mejora de publicación diaria de inmuebles: 83 inmuebles publicados, +277% vs. mayo."
+      ]
+    },
+    {
+      "mes": "Mayo",
+      "tag": null,
+      "tagClass": null,
+      "items": [
+        "Mejor mes de visualizaciones en redes hasta la fecha: 394.059, +41,7% vs. abril.",
+        "26 menciones en medios de comunicación, el nivel más alto del semestre.",
+        "Alianzas externas con actores del sector inmobiliario impulsaron tráfico adicional al sitio web."
+      ]
+    },
+    {
+      "mes": "Abril",
+      "tag": null,
+      "tagClass": null,
+      "items": [
+        "Activación de campañas en Meta enfocadas en conversaciones sobre propiedades privadas y de la SAE.",
+        "Creación de público de retargeting a partir de las visitas al perfil de redes sociales.",
+        "Inversión en pauta aún no reportada por la fuente para este mes."
+      ]
+    }
   ]
 };
 </script>
