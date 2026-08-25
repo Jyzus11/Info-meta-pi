@@ -109,9 +109,9 @@ const DASHBOARD_DATA = {
       "Mayo": "Se mantiene el enfoque en conversaciones sobre propiedades privadas y SAE vía Meta, y promoción de marca vía YouTube. Primer mes con crecimiento fuerte de alcance (+144% vs. abril) tras ampliar la inversión.",
       "Junio": "Continúa la estrategia de conversaciones sobre el portafolio SAE y privado. Se activó un plan de mejora de publicación diaria de inmuebles. El mes se vio afectado por interrupciones de campañas por falta de fondos en el medio de pago, lo que redujo impresiones e inversión frente a mayo.",
       "Julio": "Mes de mejor desempeño del año: prioriza activos estratégicos de más de $1.000 millones y leads calificados. Se incorpora Google Max Performance (display, buscador y YouTube Shorts) para maximizar conversión, y TikTok se suma con retargeting de visitas al perfil.",
-      "Marzo": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)",
       "Enero": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)",
       "Febrero": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)",
+      "Marzo": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)",
       "Agosto": "(Pendiente de redactar: a que publico y objetivo fue dirigida la pauta este mes)"
     },
     "detalle": {
@@ -158,16 +158,6 @@ const DASHBOARD_DATA = {
         "Inversión Google": "$974.480",
         "Inversión Tiktok": "$619.325"
       },
-      "Marzo": {
-        "Impresiones Meta": 123189,
-        "Clics Meta": 7846,
-        "CPC Meta": 92,
-        "Inversión Meta": "$842.848",
-        "Impresiones Google": 0,
-        "CPC Google": 0,
-        "Inversión Google": "$0",
-        "Inversión Tiktok": "$0"
-      },
       "Enero": {
         "Impresiones Meta": "28.030\n",
         "Clics Meta": 374,
@@ -183,6 +173,16 @@ const DASHBOARD_DATA = {
         "Clics Meta": 7676,
         "CPC Meta": 92,
         "Inversión Meta": "$465.865",
+        "Impresiones Google": 0,
+        "CPC Google": 0,
+        "Inversión Google": "$0",
+        "Inversión Tiktok": "$0"
+      },
+      "Marzo": {
+        "Impresiones Meta": 123189,
+        "Clics Meta": 7846,
+        "CPC Meta": 92,
+        "Inversión Meta": "$842.848",
         "Impresiones Google": 0,
         "CPC Google": 0,
         "Inversión Google": "$0",
@@ -626,8 +626,8 @@ const BASES_DATA = {
       <section id="resumen" class="mb-14 scroll-mt-24">
         <div class="mb-5">
           <div class="mb-1 text-xs font-bold uppercase tracking-wider text-brand-500">Vista general</div>
-          <h2 class="mb-1 text-xl font-bold text-gray-800">Cómo va el último mes, en un vistazo</h2>
-          <p class="max-w-2xl text-sm text-gray-500">Los cuatro indicadores más importantes de mercadeo digital, comparados contra el mes anterior.</p>
+          <h2 class="mb-1 text-xl font-bold text-gray-800" id="sf-resumenTitle">Resumen acumulado</h2>
+          <p class="max-w-2xl text-sm text-gray-500">Los cuatro indicadores más importantes de mercadeo digital, sumados desde el inicio del año hasta el último dato cargado.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -636,14 +636,14 @@ const BASES_DATA = {
             <div class="mt-4 text-sm text-gray-500">Conversaciones generadas (pauta)</div>
             <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-conv-value">—</div>
             <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-conv-delta"></span>
-            <div class="mt-2 text-[11.5px] text-gray-400">Mensajes iniciados en Meta desde anuncios</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="kpi-conv-note">Mensajes iniciados en Meta desde anuncios</div>
           </div>
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-xl">📣</div>
             <div class="mt-4 text-sm text-gray-500">Alcance de la pauta (Meta)</div>
             <div class="mt-1 text-2xl font-extrabold tracking-tight text-gray-800" id="kpi-alcance-value">—</div>
             <span class="mt-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold" id="kpi-alcance-delta"></span>
-            <div class="mt-2 text-[11.5px] text-gray-400">Personas únicas alcanzadas por anuncios</div>
+            <div class="mt-2 text-[11.5px] text-gray-400" id="kpi-alcance-note">Personas únicas alcanzadas por anuncios</div>
           </div>
           <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-xs md:p-6">
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-warning-50 text-xl">💰</div>
@@ -945,26 +945,37 @@ const BASES_DATA = {
 
   function render(data){
     const p = data.pauta, port = data.portales;
-    const li = p.months.length - 1, pi = li - 1;
+    function sumSkipNull(arr){ return arr.reduce((s,v)=> s + (v==null?0:v), 0); }
+    function ultimoConDatos(arr) {
+      for (let i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] != null && arr[i] !== 0) return i;
+      }
+      return arr.length - 1;
+    }
+    const primerIdx = p.conversaciones.findIndex(v => v != null);
+    const li = ultimoConDatos(p.conversaciones);
+    const rango = primerIdx >= 0 ? `${p.months[primerIdx]}–${p.months[li]} 2026` : '';
 
     document.getElementById('sf-lastUpdated').textContent = fmtDateEs(data.lastUpdated);
     document.getElementById('sf-badgeDate').textContent = fmtDateEs(data.lastUpdated);
+    document.getElementById('sf-resumenTitle').textContent = `Resumen acumulado · ${rango}`;
 
-    // KPIs resumen
-    document.getElementById('kpi-conv-value').textContent = fmtInt(p.conversaciones[li]);
-    deltaBadge(document.getElementById('kpi-conv-delta'), pctDelta(p.conversaciones[li], p.conversaciones[pi]));
+    // KPIs resumen: suma de todos los meses con datos (no solo el ultimo)
+    document.getElementById('kpi-conv-value').textContent = fmtInt(sumSkipNull(p.conversaciones));
+    document.getElementById('kpi-conv-delta').className = 'hidden';
+    document.getElementById('kpi-conv-note').textContent = `Mensajes iniciados en Meta desde anuncios · acumulado ${rango}`;
 
-    document.getElementById('kpi-alcance-value').textContent = fmtInt(p.alcanceMeta[li]);
-    deltaBadge(document.getElementById('kpi-alcance-delta'), pctDelta(p.alcanceMeta[li], p.alcanceMeta[pi]));
+    document.getElementById('kpi-alcance-value').textContent = fmtInt(sumSkipNull(p.alcanceMeta));
+    document.getElementById('kpi-alcance-delta').className = 'hidden';
+    document.getElementById('kpi-alcance-note').textContent = `Personas alcanzadas por anuncios · acumulado ${rango}`;
 
-    document.getElementById('kpi-inversion-value').textContent = fmtMoney(p.inversionTotal[li]);
-    deltaBadge(document.getElementById('kpi-inversion-delta'), p.inversionVariacion[li]);
-    document.getElementById('kpi-inversion-note').textContent = `Todos los canales activos, ${p.months[li]} 2026`;
+    document.getElementById('kpi-inversion-value').textContent = fmtMoney(sumSkipNull(p.inversionTotal));
+    document.getElementById('kpi-inversion-delta').className = 'hidden';
+    document.getElementById('kpi-inversion-note').textContent = `Todos los canales activos · acumulado ${rango}`;
 
     const leadsMesArr = port.leadsPorMes.leads, leadsMeses = port.leadsPorMes.meses;
-    const lastLeadsIdx = leadsMesArr.length - 1;
-    document.getElementById('kpi-leads-value').textContent = fmtInt(leadsMesArr[lastLeadsIdx]);
-    deltaBadge(document.getElementById('kpi-leads-delta'), pctDelta(leadsMesArr[lastLeadsIdx], leadsMesArr[lastLeadsIdx-1]));
+    document.getElementById('kpi-leads-value').textContent = fmtInt(sumSkipNull(leadsMesArr));
+    document.getElementById('kpi-leads-delta').className = 'hidden';
 
     document.getElementById('sf-donutSubtitle').textContent = `Desde el inicio del seguimiento, ${fmtInt(port.totalAcumulado)} leads en total`;
 
