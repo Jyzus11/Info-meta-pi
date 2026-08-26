@@ -1045,10 +1045,22 @@ const BASES_DATA = {
       tooltip:{ y:{ formatter:v=>fmtInt(v) } }
     }).render();
 
+    // Color fijo por portal (no por orden): asi Finca Raiz siempre es
+    // azul, Metrocuadrado naranja, Proppit verde, Ciencuadras morado,
+    // sin importar en que orden vengan los datos ese mes.
+    const portalColors = {
+      'Finca Raíz': brand,        // azul
+      'Metrocuadrado': amber,     // naranja
+      'Proppit': green,           // verde
+      'Ciencuadras': violet,      // morado
+      'Yicela': '#D0D5DD'
+    };
+    const colorPortal = nombre => portalColors[nombre] || '#98A2B3';
+
     new ApexCharts(document.querySelector('#chartPortalDonutMini'), {
       chart:{ type:'donut', height:260, fontFamily:'Inter, sans-serif' },
       series: port.porPortalAcumulado.map(x=>x.leads), labels: port.porPortalAcumulado.map(x=>x.portal),
-      colors:[brand, violet, amber, green, '#D0D5DD'], dataLabels:{ enabled:false },
+      colors: port.porPortalAcumulado.map(x=>colorPortal(x.portal)), dataLabels:{ enabled:false },
       legend:{ position:'bottom', fontSize:'12px', markers:{radius:99} },
       plotOptions:{ pie:{ donut:{ size:'68%', labels:{ show:true, total:{ show:true, label:'Total leads', fontSize:'12px', color:'#667085', formatter:()=> fmtInt(port.totalAcumulado) } } } } },
       stroke:{ width:0 }
@@ -1064,7 +1076,7 @@ const BASES_DATA = {
     }).render();
 
     // Inversion por red social (Meta/Google/TikTok)
-    const canalColors = { Meta:'#465FFF', Google:'#F79009', Tiktok:'#12B76A' };
+    const canalColors = { Meta:'#465FFF', Google:'#F79009', Tiktok:'#000000' };
     const canales = Object.keys(p.inversionPorCanal || {});
     if (canales.length) {
       new ApexCharts(document.querySelector('#chartInversionCanal'), {
@@ -1083,7 +1095,7 @@ const BASES_DATA = {
 
     new ApexCharts(document.querySelector('#chartPortalesMes'), {
       chart:{ type:'bar', height:300, stacked:true, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
-      series: port.porMesYPortal.series, colors:[brand, violet, amber, green],
+      series: port.porMesYPortal.series, colors: port.porMesYPortal.series.map(s => colorPortal(s.name)),
       plotOptions:{ bar:{ borderRadius:5, columnWidth:'55%' } }, dataLabels:{ enabled:false },
       xaxis:{ categories:port.porMesYPortal.meses, axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
       yaxis:{ labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
