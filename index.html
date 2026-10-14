@@ -57,7 +57,7 @@
      ===================================================================== -->
 <script id="dashboard-data-block">
 const DASHBOARD_DATA = {
-  "lastUpdated": "2026-10-09",
+  "lastUpdated": "2026-10-14",
   "pauta": {
     "months": [
       "Enero",
@@ -259,36 +259,36 @@ const DASHBOARD_DATA = {
     }
   },
   "portales": {
-    "corteLabel": "9 de octubre de 2026",
+    "corteLabel": "14 de octubre de 2026",
     "mesEnCurso": "Octubre",
-    "totalAcumulado": 3229,
+    "totalAcumulado": 3250,
     "porPortalAcumulado": [
       {
         "portal": "Finca Raíz",
         "leads": 2577,
-        "pct": 79.8
+        "pct": 79.3
       },
       {
         "portal": "Ciencuadras",
-        "leads": 295,
-        "pct": 9.1
+        "leads": 312,
+        "pct": 9.6
       },
       {
         "portal": "Proppit",
         "leads": 274,
-        "pct": 8.5
+        "pct": 8.4
       },
       {
         "portal": "Metrocuadrado",
-        "leads": 81,
-        "pct": 2.5
+        "leads": 85,
+        "pct": 2.6
       }
     ],
     "mesEnCursoPorPortal": {
       "Finca Raíz": 0,
-      "Ciencuadras": 24,
+      "Ciencuadras": 41,
       "Proppit": 4,
-      "Metrocuadrado": 5
+      "Metrocuadrado": 9
     },
     "porMesYPortal": {
       "meses": [
@@ -325,7 +325,7 @@ const DASHBOARD_DATA = {
             9,
             36,
             73,
-            24
+            41
           ]
         },
         {
@@ -351,7 +351,7 @@ const DASHBOARD_DATA = {
             11,
             5,
             13,
-            5
+            9
           ]
         }
       ]
@@ -375,21 +375,21 @@ const DASHBOARD_DATA = {
         181,
         229,
         2241,
-        33
+        54
       ]
     },
     "porTipoInmueble": [
       {
         "tipo": "Apartamento",
-        "leads": 1401
+        "leads": 1416
       },
       {
         "tipo": "Casa",
-        "leads": 1239
+        "leads": 1241
       },
       {
         "tipo": "Lote",
-        "leads": 321
+        "leads": 323
       },
       {
         "tipo": "Local Comercial",
@@ -397,7 +397,7 @@ const DASHBOARD_DATA = {
       },
       {
         "tipo": "Bodega",
-        "leads": 97
+        "leads": 99
       },
       {
         "tipo": "Oficina",
@@ -439,19 +439,19 @@ const DASHBOARD_DATA = {
     "porVentaArriendo": [
       {
         "modalidad": "Venta SAE",
-        "leads": 2456
+        "leads": 2457
       },
       {
         "modalidad": "Admin / Arriendo SAE",
-        "leads": 528
+        "leads": 543
       },
       {
         "modalidad": "Venta Privado",
-        "leads": 127
+        "leads": 131
       },
       {
         "modalidad": "Arriendo Privado",
-        "leads": 117
+        "leads": 118
       }
     ]
   },
@@ -459,11 +459,11 @@ const DASHBOARD_DATA = {
     "porEstado": [
       {
         "estado": "SIN GESTIONAR",
-        "leads": 2857
+        "leads": 2869
       },
       {
         "estado": "EN GESTION",
-        "leads": 265
+        "leads": 271
       },
       {
         "estado": "CERRADO",
@@ -476,13 +476,18 @@ const DASHBOARD_DATA = {
       {
         "estado": "AVANZO EN EL PROCESO",
         "leads": 2
+      },
+      {
+        "estado": "PENDIENTE",
+        "leads": 3
       }
     ],
     "estadosDetalle": [
       "EN GESTION",
       "CERRADO",
       "NO CONTACTADO",
-      "AVANZO EN EL PROCESO"
+      "AVANZO EN EL PROCESO",
+      "PENDIENTE"
     ],
     "porEjecutivo": [
       {
@@ -491,7 +496,8 @@ const DASHBOARD_DATA = {
           "EN GESTION": 2,
           "CERRADO": 1,
           "NO CONTACTADO": 0,
-          "AVANZO EN EL PROCESO": 0
+          "AVANZO EN EL PROCESO": 0,
+          "PENDIENTE": 0
         }
       },
       {
@@ -500,7 +506,8 @@ const DASHBOARD_DATA = {
           "EN GESTION": 59,
           "CERRADO": 2,
           "NO CONTACTADO": 0,
-          "AVANZO EN EL PROCESO": 0
+          "AVANZO EN EL PROCESO": 0,
+          "PENDIENTE": 0
         }
       },
       {
@@ -509,16 +516,18 @@ const DASHBOARD_DATA = {
           "EN GESTION": 42,
           "CERRADO": 49,
           "NO CONTACTADO": 7,
-          "AVANZO EN EL PROCESO": 2
+          "AVANZO EN EL PROCESO": 2,
+          "PENDIENTE": 0
         }
       },
       {
         "ejecutivo": "STEVEN",
         "detalle": {
-          "EN GESTION": 148,
+          "EN GESTION": 154,
           "CERRADO": 26,
           "NO CONTACTADO": 10,
-          "AVANZO EN EL PROCESO": 0
+          "AVANZO EN EL PROCESO": 0,
+          "PENDIENTE": 3
         }
       },
       {
@@ -527,7 +536,8 @@ const DASHBOARD_DATA = {
           "EN GESTION": 10,
           "CERRADO": 3,
           "NO CONTACTADO": 0,
-          "AVANZO EN EL PROCESO": 0
+          "AVANZO EN EL PROCESO": 0,
+          "PENDIENTE": 0
         }
       },
       {
@@ -536,26 +546,27 @@ const DASHBOARD_DATA = {
           "EN GESTION": 4,
           "CERRADO": 5,
           "NO CONTACTADO": 2,
-          "AVANZO EN EL PROCESO": 0
+          "AVANZO EN EL PROCESO": 0,
+          "PENDIENTE": 0
         }
       }
     ],
     "sinGestionarPorLinea": [
       {
         "linea": "VENTA SAE",
-        "leads": 2380
+        "leads": 2381
       },
       {
         "linea": "ADMIN / ARRIENDO SAE",
-        "leads": 426
+        "leads": 441
       },
       {
         "linea": "ARRIENDO PRIVADO",
-        "leads": 35
+        "leads": 29
       },
       {
         "linea": "VENTA PRIVADO",
-        "leads": 15
+        "leads": 17
       },
       {
         "linea": "SIN DEFINIR",
@@ -565,7 +576,7 @@ const DASHBOARD_DATA = {
     "asignacionReal": [
       {
         "ejecutivo": "SIN ASIGNAR",
-        "total": 1546
+        "total": 1558
       },
       {
         "ejecutivo": "DAGOBERTO",
@@ -577,7 +588,7 @@ const DASHBOARD_DATA = {
       },
       {
         "ejecutivo": "STEVEN",
-        "total": 223
+        "total": 232
       },
       {
         "ejecutivo": "ALEXA",
@@ -645,7 +656,7 @@ const DASHBOARD_DATA = {
      ===================================================================== -->
 <script id="bases-data-block">
 const BASES_DATA = {
-  "lastUpdated": "2026-10-13",
+  "lastUpdated": "2026-10-14",
   "eventos": [
     {
       "nombre": "Registro continuo de Brokers",
