@@ -1502,10 +1502,14 @@ const BASES_DATA = {
     new ApexCharts(document.querySelector('#chartPortalesMes'), {
       chart:{ type:'bar', height:300, stacked:true, toolbar:{show:false}, fontFamily:'Inter, sans-serif' },
       series: port.porMesYPortal.series, colors: port.porMesYPortal.series.map(s => colorPortal(s.name)),
-      plotOptions:{ bar:{ borderRadius:5, columnWidth:'55%' } }, dataLabels:{ enabled:false },
+      // Total de leads de todos los portales, escrito sobre cada barra
+      plotOptions:{ bar:{ borderRadius:5, columnWidth:'55%',
+        dataLabels:{ total:{ enabled:true, offsetY:-6, formatter:v=>fmtInt(v),
+          style:{ fontSize:'12px', fontWeight:700, color:'#16335A', fontFamily:'Inter, sans-serif' } } } } },
+      dataLabels:{ enabled:false },
       xaxis:{ categories:port.porMesYPortal.meses, axisBorder:{show:false}, axisTicks:{show:false}, labels:{style:{colors:'#667085',fontSize:'12px'}} },
       yaxis:{ labels:{formatter:v=>fmtInt(v),style:{colors:'#667085',fontSize:'11px'}} },
-      grid:{ borderColor:'#F2F4F7' }, legend:{ position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} }
+      grid:{ borderColor:'#F2F4F7', padding:{ top:18 } }, legend:{ position:'top', horizontalAlign:'left', fontSize:'12px', markers:{radius:99} }
     }).render();
 
     new ApexCharts(document.querySelector('#chartTipoInmueble'), {
